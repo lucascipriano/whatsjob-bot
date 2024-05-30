@@ -13,3 +13,9 @@
 - pedroslopez/whatsapp-web.js#381
 
 - pedroslopez/whatsapp-web.js#2542
+
+# SHUTDOWN HEROKU
+
+- heroku ps:scale web=0 --app whatsjob-bot
+
+- heroku ps:scale web=1 --app whatsjob-bot
