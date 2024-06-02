@@ -4,7 +4,7 @@ import { whatsappService } from "./core/services/whatsapp-service";
 
 function bootstrap() {
   const port = process.env.PORT || 3000;
-  const server = express().use(express.json()).use("/", router);
+  const server = express().use(express.json()).use("/api/v1", router);
 
   whatsappService.initialize();
 

@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { whatsappService } from "../../../core/services/whatsapp-service";
 import * as QRCode from "qrcode";
 
-const LOCAL_QRCODE_URL = "http://localhost:3000/qrcode";
+const LOCAL_QRCODE_URL = "http://localhost:3000/api/v1/qrcode";
 
 class QRCodeController {
   private qrCode: string = "";
