@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { whatsappService } from "../../../core/services/whatsapp-service";
 import * as QRCode from "qrcode";
+import "dotenv/config";
 
 class QRCodeController {
   private qrCode: string = "";
