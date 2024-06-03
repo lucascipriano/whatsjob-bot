@@ -2,15 +2,13 @@ import { Request, Response } from "express";
 import { whatsappService } from "../../../core/services/whatsapp-service";
 import * as QRCode from "qrcode";
 
-const LOCAL_QRCODE_URL = "http://localhost:3000/api/v1/qrcode";
-
 class QRCodeController {
   private qrCode: string = "";
 
   constructor() {
     whatsappService.on("qr", (qr) => {
       this.qrCode = qr;
-      console.log(`QRCode: ${LOCAL_QRCODE_URL}`);
+      console.log(`QRCode: ${process.env.SITE_URL}/api/v1/qrcode`);
     });
 
     whatsappService.on("ready", () => {
