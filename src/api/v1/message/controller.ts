@@ -25,8 +25,67 @@ class MessageController {
   }
 
   public sendText = async (req: Request, res: Response) => {
-    await whatsappService.sendMessage("5547997624220@c.us", "Teste");
-    return res.json({ msg: "enviado!" });
+    const number = req.body.number;
+    const numberDDI = number.substr(0, 2);
+    const numberDDD = number.substr(2, 2);
+    const numberUser = number.substr(-8, 8);
+    const message = req.body.message;
+
+    if (numberDDI !== "55") {
+      const completeNumber = number + "@c.us";
+      whatsappService
+        .sendMessage(completeNumber, message)
+        .then((response) => {
+          res.status(200).json({
+            status: true,
+            message: "BOT Mensagem enviada",
+            response: response,
+          });
+        })
+        .catch((err) => {
+          res.status(500).json({
+            status: false,
+            message: "BOT Mensagem não enviada",
+            response: err.text,
+          });
+        });
+    } else if (numberDDI === "55" && parseInt(numberDDD) <= 30) {
+      const completeNumber = "55" + numberDDD + "9" + numberUser + "@c.us";
+      whatsappService
+        .sendMessage(completeNumber, message)
+        .then((response) => {
+          res.status(200).json({
+            status: true,
+            message: "BOT Mensagem enviada",
+            response: response,
+          });
+        })
+        .catch((err) => {
+          res.status(500).json({
+            status: false,
+            message: "BOT Mensagem não enviada",
+            response: err.text,
+          });
+        });
+    } else if (numberDDI === "55" && parseInt(numberDDD) > 30) {
+      const completeNumber = "55" + numberDDD + numberUser + "@c.us";
+      whatsappService
+        .sendMessage(completeNumber, message)
+        .then((response) => {
+          res.status(200).json({
+            status: true,
+            message: "BOT Mensagem enviada",
+            response: response,
+          });
+        })
+        .catch((err) => {
+          res.status(500).json({
+            status: false,
+            message: "BOT Mensagem não enviada",
+            response: err.text,
+          });
+        });
+    }
   };
 }
 
