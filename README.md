@@ -1,21 +1,32 @@
-# TUTORIAIS
+<div align="center">
+  <img alt="Happy" src=".github/logo.png" width="100" height="100">
+</div>
 
-- Deploy HEROKU: https://www.youtube.com/watch?v=tNF13Uqa3wE
+<p align="center">Plataforma Open-Source para arrumar aquela vaguinha na área de TI, visite o site <a href="https://whatsjob-site.vercel.app/">clicando aqui!</a></p>
 
-- Telera (numeros de telefone + emulador): https://www.youtube.com/watch?v=2OYJ3V9yeuM
+<div align="center">
+  <img alt="Happy" src=".github/preview.jpg" width="100%">
+</div>
 
-- Template padrão do bot: https://www.youtube.com/watch?v=sF9uJqVfWpg&t=173s
+# Descrição
 
-- Explicação deploy heroku: https://www.youtube.com/watch?v=1icOaf84LAA&t=81s
+WhatsJob é uma aplicação que ajuda você a encontrar vagas de emprego focadas em TI de forma rápida e
+eficiente. Com uma interface amigável, você pode buscar e se candidatar a oportunidades diretamente
+pelo site. Além disso, oferecemos um link direto para um bot no WhatsApp que facilita ainda mais o
+processo de busca de emprego, e, se desejar se cadastre na lista de membros para receber as vagas
+semanalmente no seu WhatsApp.
 
-- https://github.com/ameybhavsar24/ww-bot/blob/master/DEPLOY.md
+# Features
 
-- pedroslopez/whatsapp-web.js#381
+- Busca de Vagas: Encontre oportunidades de emprego com base em sua localização e área de interesse.
+- Aplicação Rápida: Candidate-se a vagas diretamente pelo site com apenas alguns cliques.
+- Integração com WhatsApp: Conecte-se com nosso bot no WhatsApp para receber notificações e
+  atualizações de novas vagas.
+- Interface Amigável: Navegação intuitiva e design responsivo para uma melhor experiência do
+  usuário.
+- Cadastro de vagas: Você pode nós ajudar enviando vagas para ajudar as outras pessoas.
 
-- pedroslopez/whatsapp-web.js#2542
+# Como usar
 
-# SHUTDOWN HEROKU
-
-- heroku ps:scale web=0 --app whatsjob-bot
-
-- heroku ps:scale web=1 --app whatsjob-bot
+- Desligar Aplicação: `heroku ps:scale web=0 --app whatsjob-bot`
+- Subir Aplicação: `heroku ps:scale web=1 --app whatsjob-bot`
