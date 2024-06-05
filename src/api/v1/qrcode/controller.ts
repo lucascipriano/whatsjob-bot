@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import { whatsappService } from "../../../core/services/whatsapp-service";
 import * as QRCode from "qrcode";
-import "dotenv/config";
 
 const BOT_MESSAGES = {
   qr: `© BOT - QRCode recebido! Vá para ${process.env.SITE_URL}/api/v1/qrcode e aponte a câmera do seu celular!`,
