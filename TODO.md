@@ -7,3 +7,14 @@
 - https://github.com/ameybhavsar24/ww-bot/blob/master/DEPLOY.md
 - pedroslopez/whatsapp-web.js#381
 - pedroslopez/whatsapp-web.js#2542
+
+### Layout do bot
+
+Bom dia pessoal!
+
+Vamos começar o dia com mais vagas na área de TI
+
+- 🏢 Empresa:
+- 💼 Vaga:
+- 🚩 Local:
+- ❓ Link / Inscrição:
