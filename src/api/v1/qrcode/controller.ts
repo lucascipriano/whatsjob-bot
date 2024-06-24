@@ -1,6 +1,8 @@
 import { Request, Response } from "express";
 import { whatsappService } from "../../../core/services/whatsapp-service";
 import * as QRCode from "qrcode";
+import { supabaseService } from "../../../core/services/supabase-service";
+import { CronJob } from "cron";
 
 const BOT_MESSAGES = {
   qr: `© BOT - QRCode recebido! Vá para ${process.env.SITE_URL}/api/v1/qrcode e aponte a câmera do seu celular!`,
@@ -22,6 +24,7 @@ class QRCodeController {
 
     whatsappService.on("ready", () => {
       console.log(BOT_MESSAGES.ready);
+      this.initializeCronJob();
     });
 
     whatsappService.on("authenticated", () => {
@@ -46,6 +49,37 @@ class QRCodeController {
     res.setHeader("Content-Type", "image/png");
     return QRCode.toFileStream(res, this.qrCode);
   };
+
+  private async sendBroadcastMessage() {
+    const { data, error } = await supabaseService.from("numeros").select("numero");
+
+    if (error) {
+      console.error('Erro ao buscar números do banco de dados:', error);
+      return;
+    }
+
+    for (const entry of data) {
+      const number = entry.numero;
+      try {
+        await whatsappService.sendMessage(`${number}@c.us`, `Olá! Esta é uma mensagem enviada automaticamente.`);
+        console.log(`Mensagem enviada para o número: ${number}`);
+      } catch (sendError) {
+        console.error(`Erro ao enviar mensagem para o número ${number}:`, sendError);
+      }
+    }
+  }
+
+  private initializeCronJob() {
+    const job = new CronJob(
+      '0 9 */15 * *',
+      () => this.sendBroadcastMessage(),
+      null,
+      true,
+      'America/Los_Angeles'
+    );
+
+    job.start();
+  }
 }
 
 export { QRCodeController };
