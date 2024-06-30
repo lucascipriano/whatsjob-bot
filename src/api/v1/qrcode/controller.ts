@@ -3,6 +3,7 @@ import { whatsappService } from "../../../core/services/whatsapp-service";
 import * as QRCode from "qrcode";
 import { supabaseService } from "../../../core/services/supabase-service";
 import { CronJob } from "cron";
+import { delay } from "../../../core/utils/delay";
 
 const BOT_MESSAGES = {
   qr: `© BOT - QRCode recebido! Vá para ${process.env.SITE_URL}/api/v1/qrcode e aponte a câmera do seu celular!`,
@@ -58,16 +59,55 @@ class QRCodeController {
       return;
     }
 
+    const { data: vagasData, error: vagasError } = await supabaseService.from("vagas").select("titulo, link, empresa, senioridade, modalidade");
+
+    if (vagasError) {
+      console.error('Erro ao buscar vagas do banco de dados:', vagasError);
+      return;
+    }
+
+    if (!vagasData || vagasData.length === 0) {
+      console.log('Nenhuma vaga disponível no momento.');
+      return;
+    }
+
+    let message = `Seguem as vagas!`;
+
+    vagasData.forEach((vaga: any) => {
+      message += 
+        `\r\n\r\n` +
+        `- 🏢 Empresa: ${vaga.empresa}\r\n` +
+        `- 🎓 Senioridade: ${vaga.senioridade}\r\n` +
+        `- 💼 Vaga: ${vaga.titulo}\r\n` +
+        `- 🚩 Modalidade: ${vaga.modalidade}\r\n` +
+        `- ❓ Link: ${vaga.link}`;
+    });
+
     for (const entry of data) {
       const number = entry.numero;
       try {
-        await whatsappService.sendMessage(`${number}@c.us`, `Olá! Esta é uma mensagem enviada automaticamente.`);
+        await whatsappService.sendMessage(`${number}@c.us`, message);
         console.log(`Mensagem enviada para o número: ${number}`);
       } catch (sendError) {
         console.error(`Erro ao enviar mensagem para o número ${number}:`, sendError);
       }
     }
   }
+  
+  // private initializeCronJob() {
+  //   const job = new CronJob(
+  //     '*/2 * * * *',
+  //     async () => {
+  //       await delay(4000);
+  //       await this.sendBroadcastMessage();
+  //     },
+  //     null,
+  //     true,
+  //     'America/Los_Angeles'
+  //   );
+
+  //   job.start();
+  // }
 
   private initializeCronJob() {
     const job = new CronJob(

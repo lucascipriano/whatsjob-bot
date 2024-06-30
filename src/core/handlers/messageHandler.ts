@@ -80,7 +80,7 @@ async function handleAbout(contactName: string) {
 async function handleFeedback(contactName: string) {
   return (
     `Agradecemos por querer fornecer seu feedback. Por favor, clique no link abaixo para acessar nosso formulário de feedback e nos ajudar a melhorar nossos serviços:\r\n\r\n` +
-    `Formulário de Feedback: https://docs.google.com/forms/d/e/1FAIpQLScoYilCfnpASIg1154m3OEToDw1Hp_1mylFx9fl0BciNLx9yA/viewform?usp=sf_link)\r\n\r\n` +
+    `Formulário de Feedback: https://docs.google.com/forms/d/e/1FAIpQLScoYilCfnpASIg1154m3OEToDw1Hp_1mylFx9fl0BciNLx9yA/viewform?usp=sf_link \r\n\r\n` +
     `Obrigado pelo seu tempo e contribuição!`
   );
 }
@@ -90,15 +90,15 @@ async function handleCourses(contactName: string) {
     `Olá *${contactName}*!\r\n\r\n` +
     `Aqui estão alguns cursos que podem te interessar:\r\n\r\n` +
     `1. Curso de React Native\r\n` +
-    `   🔗 [Acessar curso: https://youtube.com/playlist?list=PLedVhPP7RyiL0dwk5T2D5_x_lV5KdGP50&si=E54j9_yx6g07Q7TD)\r\n\r\n` +
+    `   🔗 https://youtube.com/playlist?list=PLedVhPP7RyiL0dwk5T2D5_x_lV5KdGP50&si=E54j9_yx6g07Q7TD \r\n\r\n` +
     `2. Curso de React\r\n` +
-    `   🔗 [Acessar curso: https://youtube.com/playlist?list=PLedVhPP7RyiKOiiGMTMYil3yTEoOxO7CK&si=fF9ebRdm-jVlaVCi)\r\n\r\n` +
+    `   🔗 https://youtube.com/playlist?list=PLedVhPP7RyiKOiiGMTMYil3yTEoOxO7CK&si=fF9ebRdm-jVlaVCi \r\n\r\n` +
     `3. Curso de Backend com NestJS\r\n` +
-    `   🔗 [Acessar curso: https://youtube.com/playlist?list=PLedVhPP7RyiIOJ7R4lqXtWa4x-GX-x7rO&si=F2DxLsd4dIxQO9ny)\r\n\r\n` +
+    `   🔗 https://youtube.com/playlist?list=PLedVhPP7RyiIOJ7R4lqXtWa4x-GX-x7rO&si=F2DxLsd4dIxQO9ny \r\n\r\n` +
     `4. Curso de Python\r\n` +
-    `   🔗 [Acessar curso: https://youtube.com/playlist?list=PLHz_AreHm4dlKP6QQCekuIPky1CiwmdI6&si=U4HtfNaKsTB1n17Q)\r\n\r\n` +
+    `   🔗 https://youtube.com/playlist?list=PLHz_AreHm4dlKP6QQCekuIPky1CiwmdI6&si=U4HtfNaKsTB1n17Q \r\n\r\n` +
     `5. Curso de HTML e CSS\r\n` +
-    `   🔗 [Acessar curso: https://youtube.com/playlist?list=PLHz_AreHm4dkZ9-atkcmcBaMZdmLHft8n&si=JLTccpKB8h0wHarP)\r\n\r\n` +
+    `   🔗 https://youtube.com/playlist?list=PLHz_AreHm4dkZ9-atkcmcBaMZdmLHft8n&si=JLTccpKB8h0wHarP \r\n\r\n` +
     `Aproveite os cursos e bons estudos!`
   );
 }
@@ -115,15 +115,16 @@ async function handleJobs(contactName: string) {
   }
 
   //let message = `Bom dia pessoal!\r\n\r\nVamos começar o dia com mais vagas na área de TI\r\n\r\n`;
-  let message = `Seguem as vagas!\r\n\r\n`;
+  let message = `Seguem as vagas!`;
 
   data.forEach((vaga: any) => {
     message += 
+      `\r\n\r\n` +
       `- 🏢 Empresa: ${vaga.empresa}\r\n` +
       `- 🎓 Senioridade: ${vaga.senioridade}\r\n` +
       `- 💼 Vaga: ${vaga.titulo}\r\n` +
       `- 🚩 Modalidade: ${vaga.modalidade}\r\n` +
-      `- ❓ Link: ${vaga.link}\r\n\r\n`;
+      `- ❓ Link: ${vaga.link}`;
   });
 
   return message;
@@ -133,7 +134,7 @@ async function handleDonation(contactName: string) {
   return (
     `Agradecemos por considerar fazer uma doação para apoiar nosso projeto.\r\n\r\n` +
     `Você pode fazer uma doação utilizando a chave Pix abaixo:\r\n\r\n` +
-    `🔑 Chave Pix: [SUA_CHAVE_PIX]\r\n\r\n` +
+    `🔑 Chave Pix: [eduardo.amaro164@gmail.com] \r\n\r\n` +
     `Obrigado pelo seu apoio!`
   );
 }
@@ -142,20 +143,20 @@ async function handleChannels(contactName: string) {
   return (
     `*${contactName}*, segue alguns canais que recomendo você dar uma olhada!\r\n\r\n` +
     `Aqui estão alguns canais de tecnologia que podem te interessar:\r\n\r\n` +
-    `1. Código Fonte TV: https://www.youtube.com/@codigofontetv)\r\n` +
-    `2. Mano deyvin: https://www.youtube.com/@manodeyvin)\r\n` +
-    `3. Rocketseat: https://www.youtube.com/@rocketseat)\r\n` +
-    `4. Lucas Montano: https://www.youtube.com/@LucasMontano)\r\n` +
-    `5. Fiasco: https://www.youtube.com/@GrandeFiasco)\r\n` +
-    `6. Diolinux: https://www.youtube.com/@Diolinux)\r\n` +
-    `7. Curso em Vídeo: https://www.youtube.com/c/CursoemV%C3%ADdeo)\r\n` +
-    `8. Sujeito programador: https://www.youtube.com/@Sujeitoprogramador)\r\n` +
-    `9. Olhar Digital: https://www.youtube.com/@OlharDigital)\r\n` +
-    `10. Micael Mota: https://www.youtube.com/@devmicaelomota)\r\n` +
-    `11. Léo Andrade: https://www.youtube.com/@leoandradenet)\r\n` +
-    `12. Jovem Tranquilão: https://www.youtube.com/c/JovemTranquil%C3%A3o)\r\n` +
-    `13. Dev Erik: https://www.youtube.com/@deverik)\r\n` +
-    `14. Bolt: https://www.youtube.com/@boltjz)\r\n\r\n` +
+    `1. Código Fonte TV: https://www.youtube.com/@codigofontetv \r\n` +
+    `2. Mano deyvin: https://www.youtube.com/@manodeyvin \r\n` +
+    `3. Rocketseat: https://www.youtube.com/@rocketseat \r\n` +
+    `4. Lucas Montano: https://www.youtube.com/@LucasMontano \r\n` +
+    `5. Fiasco: https://www.youtube.com/@GrandeFiasco \r\n` +
+    `6. Diolinux: https://www.youtube.com/@Diolinux \r\n` +
+    `7. Curso em Vídeo: https://www.youtube.com/c/CursoemV%C3%ADdeo \r\n` +
+    `8. Sujeito programador: https://www.youtube.com/@Sujeitoprogramador \r\n` +
+    `9. Olhar Digital: https://www.youtube.com/@OlharDigital \r\n` +
+    `10. Micael Mota: https://www.youtube.com/@devmicaelomota \r\n` +
+    `11. Léo Andrade: https://www.youtube.com/@leoandradenet \r\n` +
+    `12. Jovem Tranquilão: https://www.youtube.com/c/JovemTranquil%C3%A3o \r\n` +
+    `13. Dev Erik: https://www.youtube.com/@deverik \r\n` +
+    `14. Bolt: https://www.youtube.com/@boltjz \r\n\r\n` +
     `Aproveite os conteúdos desses canais e bons estudos!`
   );
 }
